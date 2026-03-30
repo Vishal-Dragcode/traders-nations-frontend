@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background -->
+  <circle cx="50" cy="50" r="45" fill="#0b0b0b"/>
+
+  <!-- Glow border -->
+  <circle cx="50" cy="50" r="48"
+          fill="none"
+          stroke="#4da6ff"
+          stroke-width="2"
+          stroke-dasharray="6 4"
+          opacity="0.8"/>
+
+  <!-- Text -->
+  <text x="52%" y="62%"
+        text-anchor="middle"
+        fill="white"
+        font-size="34"
+        font-family="Arial, sans-serif"
+        font-weight="bold">
+    TN
+  </text>
+</svg>
