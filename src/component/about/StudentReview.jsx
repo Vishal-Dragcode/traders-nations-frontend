@@ -1,9 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useTheme } from "../../settings/ThemeContext";
 
-import award1    from "../../assets/images/award1.jpeg";
-import award2    from "../../assets/images/award2.jpeg";
-import tejasToge from "../../assets/images/tejas-toge.jpeg";
 
 const moments = [
   {
