@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useTheme } from "../../settings/ThemeContext";
 import { API_URL } from "../../../config";
 import { Toast } from 'primereact/toast';
@@ -66,6 +67,22 @@ export default function EnrollmentForm() {
   const [form, setForm] = useState(initialForm);
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
+  const { id } = useParams();
+
+  // ── Effect: Pre-populate course based on URL ────────────────
+  useEffect(() => {
+    if (id) {
+      // Map common slugs to formal titles if needed
+      const courseMap = {
+        'master-bundle': 'Forex Master Bundle',
+        'basic': 'Stock Market Basics',
+        'advanced': 'Advanced Trading',
+        'full-stack': 'Full Stack Development'
+      };
+      const formalName = courseMap[id] || id.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      set("courseDetails.courseEnrolled", formalName);
+    }
+  }, [id]);
 
   // ── Derived style tokens ──────────────────────────────────────
   const accent = "#A5B4FC";
