@@ -10,7 +10,7 @@ import {
 import { Toast } from 'primereact/toast';
 import { Sidebar } from 'primereact/sidebar';
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+import { API_URL } from "../../../config";
 
 const StatusBadge = ({ status }) => {
     const styles = {
@@ -72,7 +72,12 @@ export default function EnrollmentTable() {
     const fetchEnrollments = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`${API_URL}/api/enroll`);
+            const token = localStorage.getItem('token');
+            const response = await fetch(`${API_URL}/api/enroll`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const result = await response.json();
             if (result.success) {
                 const mappedData = result.data.map(r => ({
@@ -119,10 +124,12 @@ export default function EnrollmentTable() {
     const updateStatus = async (newStatus) => {
         if (!viewingRecord) return;
         try {
+            const token = localStorage.getItem('token');
             const response = await fetch(`${API_URL}/api/enroll/${viewingRecord.dbId}`, {
                 method: 'PUT',
                 headers: { 
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ status: newStatus.toLowerCase() })
             });
@@ -152,10 +159,12 @@ export default function EnrollmentTable() {
 
     const handleSaveDetails = async () => {
         try {
+            const token = localStorage.getItem('token');
             const response = await fetch(`${API_URL}/api/enroll/${viewingRecord.dbId}`, {
                 method: 'PUT',
                 headers: { 
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     fullName: viewingRecord.fullName,

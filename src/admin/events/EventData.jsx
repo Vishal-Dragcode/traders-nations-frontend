@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { Search, Download, Trash2, Printer, Eye, User, Phone, Mail, Calendar, MapPin, Zap, Activity, CheckCircle2, ChevronLeft, ShieldCheck, Users } from "lucide-react";
+import { API_URL } from "../../../config";
 
 export default function EventData({ onBack, event, isModal = false }) {
     const [registrations, setRegistrations] = useState([]);
     const [loading, setLoading] = useState(true);
-    const API_BASE_URL = "http://localhost:5000/api";
+    const API_BASE_URL = `${API_URL}/api`;
 
     React.useEffect(() => {
         const fetchRegistrations = async () => {
             if (!event?._id) return;
             try {
                 setLoading(true);
-                const res = await fetch(`${API_BASE_URL}/events/${event._id}/registrations`);
+                const token = localStorage.getItem('token');
+                const res = await fetch(`${API_BASE_URL}/events/${event._id}/registrations`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 const data = await res.json();
                 if (data.success) {
                     // Map backend fields to frontend display names Proper

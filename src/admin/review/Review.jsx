@@ -16,7 +16,12 @@ const ReviewDashboard = () => {
   const fetchReviews = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${API_URL}/api/reviews`);
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${API_URL}/api/reviews`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       const result = await response.json();
       if (result.success) {
         setReviews(result.data.map(r => ({
@@ -49,10 +54,12 @@ const ReviewDashboard = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem('token');
       const response = await fetch(`${API_URL}/api/reviews/${editingReview.id}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
           username: editingReview.name,
@@ -86,8 +93,12 @@ const ReviewDashboard = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this review?")) {
       try {
+        const token = localStorage.getItem('token');
         const response = await fetch(`${API_URL}/api/reviews/${id}`, {
-          method: 'DELETE'
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         });
         const result = await response.json();
 

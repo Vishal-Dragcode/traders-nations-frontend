@@ -36,7 +36,12 @@ function DashboardContact() {
   const fetchContacts = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${API_URL}/api/contact`);
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${API_URL}/api/contact`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       const result = await response.json();
       if (result.success) {
         setContacts(result.data.map(c => ({
@@ -79,10 +84,12 @@ function DashboardContact() {
   // Save edited contact via PUT API
   const handleSaveContact = async () => {
     try {
+      const token = localStorage.getItem('token');
       const response = await fetch(`${API_URL}/api/contact/${viewingContact.id}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
           name: viewingContact.name,
@@ -117,8 +124,12 @@ function DashboardContact() {
   // Toggle read/unread
   const handleToggleRead = async (id) => {
     try {
+      const token = localStorage.getItem('token');
       const response = await fetch(`${API_URL}/api/contact/${id}/isread`, {
-        method: 'PATCH'
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
       const result = await response.json();
       if (result.success) {
@@ -150,8 +161,12 @@ function DashboardContact() {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to purge this communication log?")) {
       try {
+        const token = localStorage.getItem('token');
         const response = await fetch(`${API_URL}/api/contact/${id}`, {
-          method: 'DELETE'
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         });
         const result = await response.json();
         

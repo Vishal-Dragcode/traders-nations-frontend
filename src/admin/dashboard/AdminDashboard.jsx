@@ -17,30 +17,28 @@ const AdminDashboard = () => {
         const fetchDashboardData = async () => {
             try {
                 setLoading(true);
+                const token = localStorage.getItem('token');
 
-                // Fetching parallel stats for high performance
-                const [regRes, revRes, conRes] = await Promise.all([
-                    fetch(`${API_URL}/api/enroll`),
-                    fetch(`${API_URL}/api/reviews`), // Reviews usually public-list
-                    fetch(`${API_URL}/api/contact`)
-                ]);
-
-                const [regData, revData, conData] = await Promise.all([
-                    regRes.json(),
-                    revRes.json(),
-                    conRes.json()
-                ]);
-
-                const todayStr = new Date().toDateString();
-
-                setStats({
-                    totalRegistrations: regData.success ? regData.data.length : 0,
-                    totalReviews: revData.success ? revData.data.length : 0,
-                    totalContacts: conData.success ? conData.data.length : 0,
-                    todayRegistrations: regData.success ? regData.data.filter(r => new Date(r.createdAt).toDateString() === todayStr).length : 0,
-                    todayReviews: revData.success ? revData.data.filter(r => new Date(r.createdAt).toDateString() === todayStr).length : 0,
-                    todayContacts: conData.success ? conData.data.filter(r => new Date(r.createdAt).toDateString() === todayStr).length : 0,
+                const response = await fetch(`${API_URL}/api/admin/dashboard-stats`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
                 });
+                
+                const result = await response.json();
+
+                if (result.success && result.data) {
+                    const fetchedStats = {
+                        totalRegistrations: result.data.totalRegistrations || 0,
+                        totalReviews: result.data.totalReviews || 0,
+                        totalContacts: result.data.totalContacts || 0,
+                        todayRegistrations: result.data.todayRegistrations || 0,
+                        todayReviews: result.data.todayReviews || 0,
+                        todayContacts: result.data.todayContacts || 0
+                    };
+                    console.log("📊 Frontend Stats Applied:", fetchedStats);
+                    setStats(fetchedStats);
+                }
             } catch (error) {
                 console.error("Dashboard Sync Failed:", error);
             } finally {

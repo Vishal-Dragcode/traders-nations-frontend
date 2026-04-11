@@ -4,6 +4,7 @@ import { Sidebar } from 'primereact/sidebar';
 import { Toast } from 'primereact/toast';
 import { Dialog } from 'primereact/dialog';
 import EventData from "./EventData";
+import { API_URL } from "../../../config";
 
 const DetailRow = ({ label, value, onChange, type = "text", textArea = false }) => (
     <div className="flex flex-col gap-1 px-4 py-3 border-b border-white/5 hover:bg-white/2 transition-colors group">
@@ -34,13 +35,18 @@ export default function EventRegister() {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const API_BASE_URL = "http://localhost:5000/api";
+    const API_BASE_URL = `${API_URL}/api`;
 
     // 1. Fetch Events from Backend
     const fetchEvents = async () => {
         try {
             setLoading(true);
-            const res = await fetch(`${API_BASE_URL}/events`);
+            const token = localStorage.getItem('token');
+            const res = await fetch(`${API_BASE_URL}/events`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const data = await res.json();
             if (data.success) {
                 setEvents(data.data);
@@ -79,7 +85,13 @@ export default function EventRegister() {
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this event? This action cannot be undone.")) {
             try {
-                const res = await fetch(`${API_BASE_URL}/events/${id}`, { method: 'DELETE' });
+                const token = localStorage.getItem('token');
+                const res = await fetch(`${API_BASE_URL}/events/${id}`, { 
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 const data = await res.json();
                 if (data.success) {
                     setEvents(events.filter(e => e._id !== id));
@@ -106,9 +118,13 @@ export default function EventRegister() {
             const method = isAddMode ? 'POST' : 'PUT';
             const url = isAddMode ? `${API_BASE_URL}/events` : `${API_BASE_URL}/events/${editingEvent._id}`;
             
+            const token = localStorage.getItem('token');
             const res = await fetch(url, {
                 method,
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
                 body: JSON.stringify(editingEvent)
             });
             const data = await res.json();

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useTheme } from "../../settings/ThemeContext";
 import { Calendar, Clock, MapPin, Users, ArrowUpRight, Zap, Mic, BookOpen, TrendingUp, X, User, Phone, Mail, CheckCircle2 } from "lucide-react";
 import { Toast } from 'primereact/toast';
+import { API_URL } from "../../../config";
 
 const RegistrationModal = ({ event, onClose, onSubmit }) => {
   const { theme, colors } = useTheme();
@@ -32,7 +33,7 @@ const RegistrationModal = ({ event, onClose, onSubmit }) => {
 
     try {
       // Use dedicated endpoint: eventId is locked in the URL, never undefined
-      const res = await fetch(`http://localhost:5000/api/events/${event._id}/register`, {
+      const res = await fetch(`${API_URL}/api/events/${event._id}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -262,7 +263,7 @@ const Events = () => {
     const fetchEvents = async () => {
       try {
         setLoading(true);
-        const res = await fetch("http://localhost:5000/api/events");
+        const res = await fetch(`${API_URL}/api/events`);
         const data = await res.json();
         if (data.success) {
             // Map backend status to frontend tags Proper
