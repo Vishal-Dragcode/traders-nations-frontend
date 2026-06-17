@@ -135,7 +135,7 @@ export default function ContactUs() {
                                 </span>
                                 <span className="text-base sm:text-lg font-medium"
                                     style={{ color: isDark ? 'rgba(255,255,255,0.9)' : colors.text }}>
-                                    +91 70836 84525
+                                    +91 96896 84525
                                 </span>
                             </div>
 
@@ -262,12 +262,13 @@ export default function ContactUs() {
                 }`}>
                 <iframe
                     title="TraderNation Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59545.61095291809!2d75.68159!3d19.87868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdb98f0e9d84bd9%3A0x5e9a77f7c87a5a21!2sChhatrapati%20Sambhajinagar%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7539.660588808835!2d74.7210484741772!3d19.11510630487239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdcbb8992683afd%3A0x8fb56d0949092b0!2sTraders%20nation%20by%20fx%20Tejas!5e0!3m2!1sen!2sin!4v1781674845285!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: "none" }}
                     allowFullScreen=""
                     loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
                 />
             </div>
 

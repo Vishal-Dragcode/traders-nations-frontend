@@ -53,8 +53,9 @@ const SelectionCard = ({ id, title, description, topics, isDark, navigate }) => 
                     </div>
                     <div className="space-y-1 pl-4 border-l border-white/5">
                         <p className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-blue-400/60' : 'text-blue-600/60'}`}>Duration</p>
-                        <div className="flex items-center gap-2">
-                            <span className={`text-lg font-black ${isDark ? 'text-white' : 'text-gray-900'}`}>25 Days</span>
+                        <div className="flex flex-col gap-0.5">
+                            <span className={`text-lg font-black leading-none mt-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>45 Days</span>
+                            <span className={`text-[9px] font-bold uppercase tracking-wide mt-1 ${isDark ? 'text-emerald-400/90' : 'text-emerald-600'}`}>+ Lifetime Live Trading</span>
                         </div>
                     </div>
                 </div>

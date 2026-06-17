@@ -21,7 +21,7 @@ const initialForm = {
     currentOccupation: "",
   },
   courseDetails: {
-    courseEnrolled: "",
+    courseEnrolled: "Forex Master Bundle",
     modeOfClass: "",
     batchTiming: "",
     tradingExperience: "",
@@ -74,10 +74,7 @@ export default function EnrollmentForm() {
     if (id) {
       // Map common slugs to formal titles if needed
       const courseMap = {
-        'master-bundle': 'Forex Master Bundle',
-        'basic': 'Stock Market Basics',
-        'advanced': 'Advanced Trading',
-        'full-stack': 'Full Stack Development'
+        'master-bundle': 'Forex Master Bundle'
       };
       const formalName = courseMap[id] || id.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
       set("courseDetails.courseEnrolled", formalName);
@@ -480,11 +477,7 @@ export default function EnrollmentForm() {
                     onChange={(e) => set("courseDetails.courseEnrolled", e.target.value)}
                     className={selectClass}
                   >
-                    <option value="">Select Course</option>
-                    <option>Full Stack Development</option>
                     <option>Forex Master Bundle</option>
-                    <option>Stock Market Basics</option>
-                    <option>Advanced Trading</option>
                   </select>
                 </InputField>
                 <InputField label="Mode of Class" required>

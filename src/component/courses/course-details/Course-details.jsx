@@ -29,6 +29,7 @@ function CourseDetails() {
                 title: "Phase 1: Foundations",
                 subtitle: "Price Action & Market Kinetics",
                 highlights: [
+                    'Fx Tejas Strategy (Regular)',
                     'Price Action (Complete Fundamentals)',
                     'Chart Reading & Candlestick Anatomy',
                     'Support & Resistance Matrix',
@@ -38,11 +39,11 @@ function CourseDetails() {
                 curriculum: [
                     {
                         section: 'Price Action Foundations',
-                        content: ['Understanding Pips & Lots', 'Candlestick Anatomy', 'Wick Rejections', 'Bullish & Bearish Engulfing']
+                        content: ['Understanding Pips & Lots', 'Candlestick Anatomy', 'Chart Patterns & Trendlines', 'Support & Resistance Matrix']
                     },
                     {
-                        section: 'Market Mechanics',
-                        content: ['Role of Support & Resistance', 'Drawing Trendlines Correctively', 'Identifying Market Trends', 'Entry & Exit Rules']
+                        section: 'Fx Tejas Strategy (Regular)',
+                        content: ['Core Concepts of Regular Strategy', 'Basic Risk Management', 'Identifying Market Trends', 'Entry & Exit Rules']
                     }
                 ]
             },
@@ -50,46 +51,46 @@ function CourseDetails() {
                 title: "Phase 2: Advanced SMC",
                 subtitle: "Institutional Order Flow",
                 highlights: [
-                    'Advanced Structure',
-                    'Mitigation & Breakers',
-                    'Supply & Demand Zones',
-                    'Institutional Stop Hunting',
-                    'Institutional Entry & Exit'
+                    'Fx Tejas Strategy (Advance)',
+                    'Liquidity Multiple Entry Point Setup',
+                    'Money Management',
+                    'News Base Strategy (Fx Tejas Strategy)',
+                    'Regular 8x-10x Reward (Fx Tejas Strategy)',
+                    'Advance SMC (Fx Tejas Strategy)'
                 ],
                 curriculum: [
                     {
-                        section: 'SMC Deep Dive',
-                        content: ['Order Blocks & Mitigation', 'Inducement & Liquidity', 'Fair Value Gaps (FVG)', 'MSB vs BOS']
+                        section: 'Advance SMC & Liquidity Mastery',
+                        content: ['Advance SMC (Fx Tejas Strategy)', 'Liquidity Multiple Entry Point Setup', 'Order Blocks & Inducement', 'Money Management']
                     },
                     {
-                        section: 'Institutional Execution',
-                        content: ['Stop Loss Hunting Patterns', 'Top-Down Analysis', 'High Probability Entries', 'Risk Management for Pros']
+                        section: 'Advanced Execution & News Trading',
+                        content: ['Fx Tejas Strategy (Advance)', 'News Base Strategy (Fx Tejas Strategy)', 'Catching 8x-10x Reward Trades', 'High Probability Execution']
                     }
                 ]
             },
             phase3: {
-                title: "Phase 3: Funded Mastery",
-                subtitle: "Pass Challenges & Scale Accounts",
+                title: "Phase 3: Mentorship & Support",
+                subtitle: "Live Trading, Office Access & Trade Copying",
                 highlights: [
-                    'Prop Firm Selection Guide',
-                    'Evaluation Rule Protection',
-                    'Drawdown Management Matrix',
-                    'Psychology of Large Capital',
-                    'Scaling & Payout Plan',
-                    'Live Challenge Breakdown'
+                    'Offline Office Access for Accuracy Issues',
+                    'Direct 1-on-1 Personal Support',
+                    'Copy Trades Directly from Fx Tejas',
+                    'Personal Trade Review & Correction',
+                    'Live Doubt Solving Sessions'
                 ],
                 curriculum: [
                     {
-                        section: 'Funded Success Blueprint',
-                        content: ['Choosing the Best Prop Firms', 'Passing Evaluation Rules', 'Daily Drawdown Protection', 'Payout & Scaling Strategies']
+                        section: 'Personal Mentorship & Office Access',
+                        content: ['Offline Office Access for Struggling Traders', '1-on-1 Accuracy Optimization', 'Personal Trade Review by Fx Tejas', 'Customized Growth Plan']
                     },
                     {
-                        section: 'The Professional Edge',
-                        content: ['Large Capital Psychology', 'Trading Plan for Challenges', 'Dealing with Account Loss', 'Professional Risk Scoring']
+                        section: 'Live Execution & Trade Copying',
+                        content: ['Live Trade Copying Sessions', 'Real-Time Market Analysis', 'Psychology & Discipline Coaching', 'Direct Support Channel Access']
                     }
                 ]
             },
-            meta: { price: "₹45,000", gst: "Inclusive of GST", oldPrice: "₹90,000", duration: "25 Days", lessons: "127" }
+            meta: { price: "₹45,000", gst: "Inclusive of GST", oldPrice: "₹90,000", duration: "45 Days", access: "Lifetime Live Trading Access", lessons: "127" }
         }
     };
 
@@ -400,6 +401,12 @@ function CourseDetails() {
                                         <Clock size={14} className="text-blue-500" />
                                         <span className={`text-[12px] font-medium ${subTextColor}`}>{currentCourse.meta.duration} total content</span>
                                     </div>
+                                    {currentCourse.meta.access && (
+                                        <div className="flex items-center gap-3">
+                                            <TrendingUp size={14} className="text-emerald-500" />
+                                            <span className={`text-[12px] font-bold text-emerald-500`}>{currentCourse.meta.access}</span>
+                                        </div>
+                                    )}
                                     <div className="flex items-center gap-3">
                                         <BookOpen size={14} className="text-blue-500" />
                                         <span className={`text-[12px] font-medium ${subTextColor}`}>{currentCourse.meta.lessons} modules</span>

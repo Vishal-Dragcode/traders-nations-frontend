@@ -96,7 +96,7 @@ const Navbar = () => {
               className={`font-bold text-lg mr-8 border-r transition-all duration-500 ${isScrolled ? 'border-white/10 pr-8' : 'border-transparent pr-0'} h-6 flex items-center whitespace-nowrap`}
               style={{ color: colors.text }}
             >
-              TRADER NATION
+              TRADER'S NATIONS
             </div>
 
             {/* Navigation Links - Aligned Right */}

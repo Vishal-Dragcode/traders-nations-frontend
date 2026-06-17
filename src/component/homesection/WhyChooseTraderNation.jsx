@@ -164,12 +164,12 @@ export default function WhyChooseTraderNation() {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         {/* Call Button */}
                         <a
-                            href="tel:+917083684525"
+                            href="tel:+919689684525"
                             className="group flex items-center gap-4 bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-bold h-14 pl-8 pr-1.5 rounded-full text-base transition-all duration-500 hover:scale-105 active:scale-95 w-full sm:w-auto"
                         >
                             <div className="flex flex-col text-left mr-8">
                                 <span className="text-[10px] uppercase tracking-[2px] opacity-70">Call Us Now</span>
-                                <span className="">+91 7083684525</span>
+                                <span className="">+91 9689684525</span>
                             </div>
                             <div className="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center transition-transform duration-500 group-hover:rotate-45">
                                 <ArrowUpRight size={20} />
