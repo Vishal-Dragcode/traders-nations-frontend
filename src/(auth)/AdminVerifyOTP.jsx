@@ -67,7 +67,7 @@ const AdminVerifyOTP = () => {
                     <form onSubmit={handleVerifyOTP} className="space-y-5">
                         <div className="text-center mb-2">
                             <p className="text-sm font-medium text-slate-400">
-                                Enter the 4-digit code sent to your <br /> secondary secure device.
+                                Enter the 6-digit code sent to your <br /> secondary secure device.
                             </p>
                         </div>
 

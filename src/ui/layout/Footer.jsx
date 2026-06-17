@@ -23,8 +23,8 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-4">
               {/* Brand Name */}
               <span className={`text-2xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                Trader's
-                <span className="text-blue-600 pl-1">Nations</span>
+                TRADER'S
+                <span className="text-blue-600 pl-1">NATION</span>
               </span>
             </div>
 
@@ -133,7 +133,7 @@ export default function Footer() {
         {/* Bottom: Copyright */}
         <p className={`text-center text-[11px] tracking-widest font-medium uppercase ${isDark ? 'text-white/20' : 'text-gray-400'
           }`}>
-          © 2026 Trader's Nations. All rights reserved.
+          © 2026 TRADER'S NATION. All rights reserved.
         </p>
 
       </div>

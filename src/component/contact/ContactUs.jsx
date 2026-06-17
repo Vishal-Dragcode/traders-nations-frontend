@@ -122,7 +122,7 @@ export default function ContactUs() {
                     <div>
                         <h1 className="text-[32px] sm:text-[42px] font-bold uppercase leading-[1.1] tracking-tight mb-16"
                             style={{ color: colors.text }}>
-                            TRADER<br />
+                            TRADER'S<br />
                             NATION<br />
                             GROUP
                         </h1>

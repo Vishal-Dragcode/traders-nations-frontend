@@ -48,7 +48,7 @@ const AdminLogin = () => {
                         Admin Access
                     </h2>
                     <p className="text-sm font-medium text-slate-500 uppercase tracking-[3px]">
-                        Trader Nation Portal
+                        TRADER'S NATION PORTAL
                     </p>
                 </div>
 
